@@ -134,7 +134,8 @@ export class KmapSolveTree extends LitElement {
 
   _click(e: MouseEvent) {
     console.log(e);
-    const target = e.composedPath()[0];
+    const target = (e.composedPath() as Element[]).filter(p => p.tagName === 'LABEL' || p.tagName === `STEP`)[0];
+
     console.log(target);
 
     if (target instanceof HTMLElement && (target.tagName === 'LABEL' || target.tagName === 'STEP')) {
