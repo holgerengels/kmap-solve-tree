@@ -147,6 +147,10 @@ export class KmapSolveTree extends LitElement {
     }
   }
 
+  public clear() {
+    this._currentAction = this._startAction;
+  }
+
   public bark() {
     if (!this._currentAction) return;
 
