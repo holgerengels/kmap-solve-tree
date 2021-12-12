@@ -162,7 +162,10 @@ export class KmapSolveTree extends LitElement {
   }
 
   public showAnswer() {
-    const finish = this.shadowRoot.querySelectorAll('action[gain=finish]')[0];
+    let finish = this.shadowRoot.querySelectorAll('action[best]')[0];
+    if (!finish)
+      finish = this.shadowRoot.querySelectorAll('action[gain=finish]')[0];
+
     if (!finish) return;
 
     this._currentAction = finish as HTMLElement;
