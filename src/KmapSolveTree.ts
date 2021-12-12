@@ -25,7 +25,7 @@ export class KmapSolveTree extends LitElement {
         display: contents;
     }
     action[done] > step {
-        display: flex;
+        display: inline-block;
     }
     action[done] > label {
         display: none;
@@ -35,7 +35,7 @@ export class KmapSolveTree extends LitElement {
         flex-flow: row wrap;
     }
     action[current] > action > label {
-        display: flex;
+        display: inline-block;
         flex: 0 1 auto;
         padding: 4px;
         border: 1px solid var(--kmap-solve-tree-border-color, gray);
@@ -43,7 +43,7 @@ export class KmapSolveTree extends LitElement {
         background-color: var(--kmap-solve-tree-background-color, lightgray);
     }
     action[current] > step, action[current] > comment {
-        display: flex;
+        display: inline-block;
     }
     action[current] > action {
         display: contents;
