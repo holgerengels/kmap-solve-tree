@@ -1,7 +1,8 @@
-import {html, css, LitElement, property, PropertyValues, internalProperty, queryAssignedNodes} from 'lit-element';
+import {html, css, LitElement, property, PropertyValues, internalProperty} from 'lit-element';
+import {katexStyles} from "./katex-css.js";
 
 export class KmapSolveTree extends LitElement {
-  static styles = css`
+  static styles = [css`
     :host {
       display: flex;
       flex-flow: column;
@@ -67,7 +68,7 @@ export class KmapSolveTree extends LitElement {
     action:not([faded]) {
       transition: opacity 0.7s ease-in-out;
     }
-  `;
+  `, katexStyles];
 
   declare shadowRoot: ShadowRoot;
 
