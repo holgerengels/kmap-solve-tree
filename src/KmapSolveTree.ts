@@ -77,8 +77,12 @@ export class KmapSolveTree extends LitElement {
   @property({ type: Number }) counter = 5;
 
   private _startAction!: HTMLElement;
+
   @internalProperty()
   private _currentAction!: HTMLElement;
+
+  @property()
+  public valid?: boolean = false;
 
   connectedCallback() {
     super.connectedCallback();
@@ -115,6 +119,8 @@ export class KmapSolveTree extends LitElement {
       setTimeout(function () {
         newAction.removeAttribute("faded");
       });
+
+      this.valid = newAction.getAttribute("gain") === "finish";
 
       this.shadowRoot.querySelectorAll('action').forEach(a => {
         if ((a as HTMLElement).contains(this._currentAction) && a !== this._currentAction)
