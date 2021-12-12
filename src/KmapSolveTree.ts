@@ -72,10 +72,6 @@ export class KmapSolveTree extends LitElement {
 
   declare shadowRoot: ShadowRoot;
 
-  @property({ type: String }) title = 'Hey there';
-
-  @property({ type: Number }) counter = 5;
-
   private _startAction!: HTMLElement;
 
   @internalProperty()
@@ -149,5 +145,22 @@ export class KmapSolveTree extends LitElement {
       this._currentAction = target.parentElement as HTMLElement;
       console.log(this._currentAction);
     }
+  }
+
+  public bark() {
+    if (!this._currentAction) return;
+
+    const current = this._currentAction;
+    current.setAttribute('faded', 'true');
+    setTimeout(function () {
+      current.removeAttribute("faded");
+    });
+  }
+
+  public showAnswer() {
+    const finish = this.shadowRoot.querySelectorAll('action[gain=finish]')[0];
+    if (!finish) return;
+
+    this._currentAction = finish as HTMLElement;
   }
 }
