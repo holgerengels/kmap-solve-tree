@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      background: #fafafa;
+    }
+  </style>
+</head>
+<body>
+  <div id="demo"></div>
+
+  <script type="module">
+    import { html, render } from 'lit-html';
+    import '../dist/src/kmap-solve-tree.js';
+
+    render(
+      html`
+        <kmap-solve-tree>
+          <activity gain="start">
+            <step>\`(x-2)^2=0\`</step>
+            <activity gain="negative">
+              <label>Ausmultiplizieren</label>
+              <step>\`x^2 - 4x + 4 = 0\`</step>
+              <activity gain="finish">
+                <label>Mitternachtsformel</label>
+                <step>\`x_(1,2) = 2\`</step>
+              </activity>
+            </activity>
+            <activity gain="finish">
+              <label>Satz vom Nullprodukt</label>
+              <step>\`x - 2 = 0 => x = 2\`</step>
+            </activity>
+          </activity>
+        </kmap-solve-tree>
+      `,
+      document.querySelector('#demo')
+    );
+  </script>
+</body>
+</html>
