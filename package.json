@@ -1,6 +1,6 @@
 {
   "name": "kmap-solve-tree",
-  "version": "0.9.7",
+  "version": "0.9.8",
   "description": "Interactively solve mathematical tasks",
   "license": "MIT",
   "author": "Holger Engels",

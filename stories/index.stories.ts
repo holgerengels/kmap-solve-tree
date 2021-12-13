@@ -34,31 +34,39 @@ const Template: Story<ArgTypes> = ({
     style="--kmap-solve-tree-text-color: ${textColor || 'black'} --kmap-solve-tree-background-color: ${backgroundColor || 'black'} --kmap-solve-tree-border-color: ${borderColor || 'black'}"
   >
     ${slot}
-    <action gain="start">
-      <step>\`(x-2)^2 = 0\`</step>
-      <action gain="negative">
-        <label>Ausmultiplizieren (Binom)</label>
-        <step>\`x^2 - 4x + 4 = 0\`</step>
-        <action gain="negative">
-          <label>Auf beiden Seiten 4 subtrahieren</label>
-          <step>\`x^2 - 4x = -4\`</step>
-          <action gain="wrong">
-            <label>Durch \`x\` teilen</label>
-            <step>\`x - 4 = -4/x\`</step>
-            <comment>Fehler: Teilen durch \`x\` ist keine Äquivalenzumformung</comment>
+    <kmap-solve-tree>
+      <action gain="start">
+        <step>\`2x^2- 4x = 6\`</step>
+        <action gain="dead end">
+          <label>\`x\` ausklammern</label>
+          <step>\`x(2x-4) = 6\`</step>
+          <comment>Faktorisieren hilft nur, wenn auf der rechten Seite \`0\` steht, sodass der Satz vom Nullprodukt
+            angewandt werden kann
+          </comment>
+        </action>
+        <action gain="wrong">
+          <label>Durch \`x\` teilen</label>
+          <step>\`x - 4 = 6/x\`</step>
+          <comment>Fehler: Teilen durch \`x\` ist keine Äquivalenzumformung</comment>
+        </action>
+        <action gain="wrong">
+          <label>Mitternachtsformel</label>
+          <step>\`a= .., b= .., c = ???\`</step>
+          <comment>Fehler: Um die Mitternachtsformel anwenden zu können, muss die Gleichung zunächst in die Nullform
+            gebracht werden
+          </comment>
+        </action>
+        <action gain="positive">
+          <label>Auf beiden Seiten 6 subtrahieren</label>
+          <step>\`2x^2- 4x - 6 = 0\`</step>
+          <action gain="finish" best>
+            <label>Mitternachtsformel</label>
+            <step>\`x_1 = -1; x_2 = 3\`</step>
+            <comment>Schnellster Lösungsweg</comment>
           </action>
         </action>
-        <action gain="finish">
-          <label>Mitternachtsformel</label>
-          <step>\`x_(1,2) = 2\`</step>
-        </action>
       </action>
-      <action gain="finish">
-        <label>Satz vom Nullprodukt</label>
-        <step>\`x - 2 = 0 => x = 2\`</step>
-        <comment>Schnellster Lösungsweg</comment>
-      </action>
-    </action>
+    </kmap-solve-tree>
   </kmap-solve-tree>
 `;
 

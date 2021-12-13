@@ -50,16 +50,16 @@ export class KmapSolveTree extends LitElement {
     }
 
     action[gain=finish] {
-      background-color: #b9f6ca;
+      background-color: #e8f5e9;
+    }
+    action[gain=positive] {
+      background-color: #e3f2fd;
     }
     action[gain=negative] {
-      background-color: #ffff8d;
-    }
-    action[gain=negative] {
-      background-color: #ffd180;
+      background-color: #fff3e0;
     }
     action[gain=wrong], action[gain='dead end'] {
-      background-color: #ff8a80;
+      background-color: #ffebee;
     }
 
     action[faded] {
@@ -92,7 +92,6 @@ export class KmapSolveTree extends LitElement {
   protected async firstUpdated(_changedProperties: PropertyValues) {
     // @ts-ignore
     this.shadowRoot.append(...this.childNodes);
-    console.log(this.shadowRoot.childNodes);
     for (let i = 0; i < this.shadowRoot.childNodes.length; i++) {
       if (this.shadowRoot.childNodes[i].nodeName === 'ACTION') {
         this._startAction = this.shadowRoot.childNodes[i] as HTMLElement;
@@ -101,7 +100,6 @@ export class KmapSolveTree extends LitElement {
         break;
       }
     }
-    console.log(this._startAction);
   }
 
   protected async update(_changedProperties: PropertyValues) {
@@ -135,15 +133,11 @@ export class KmapSolveTree extends LitElement {
   }
 
   _click(e: MouseEvent) {
-    console.log(e);
     const target = (e.composedPath() as Element[]).filter(p => p.tagName === 'LABEL' || p.tagName === `STEP`)[0];
-
-    console.log(target);
 
     if (target instanceof HTMLElement && (target.tagName === 'LABEL' || target.tagName === 'STEP')) {
       // @ts-ignore
       this._currentAction = target.parentElement as HTMLElement;
-      console.log(this._currentAction);
     }
   }
 
