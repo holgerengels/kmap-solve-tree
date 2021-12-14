@@ -12,20 +12,29 @@ export class KmapSolveTree extends LitElement {
     step, label, comment {
         display: none;
         flex: 1 0 calc(100% - 18px);
-        margin: 4px;
+        padding: 4px 8px;
+        border-radius: 4px;
     }
     action:not([current]) > step, action:not([current]) > label {
         cursor: pointer;
     }
+    action:not([current]) > step:hover, action:not([current]) > label:hover {
+        background-color: #F5F8FB;
+    }
+    action:not([current]) > label {
+        margin: 4px;
+    }
     action {
         display: none;
         border-radius: 4px;
+        padding: 4px;
     }
     action[done] {
         display: contents;
     }
     action[done] > step {
         display: inline-block;
+        padding: 4px 12px;
     }
     action[done] > label {
         display: none;
@@ -37,10 +46,11 @@ export class KmapSolveTree extends LitElement {
     action[current] > action > label {
         display: inline-block;
         flex: 0 1 auto;
-        padding: 4px;
-        border: 1px solid var(--kmap-solve-tree-border-color, gray);
+        padding: 4px 8px;
+        color: #005b9f;
+        border: 1px solid var(--kmap-solve-tree-border-color, #005b9f);
         border-radius: 4px;
-        background-color: var(--kmap-solve-tree-background-color, lightgray);
+        background-color: var(--kmap-solve-tree-background-color, transparent);
     }
     action[current] > step, action[current] > comment {
         display: inline-block;
