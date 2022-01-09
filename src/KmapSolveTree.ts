@@ -1,4 +1,5 @@
-import {html, css, LitElement, property, PropertyValues, internalProperty} from 'lit-element';
+import {html, css, LitElement, PropertyValues} from 'lit';
+import {property, state} from 'lit/decorators.js';
 import {katexStyles} from "./katex-css.js";
 
 export class KmapSolveTree extends LitElement {
@@ -84,7 +85,7 @@ export class KmapSolveTree extends LitElement {
 
   private _startAction!: HTMLElement;
 
-  @internalProperty()
+  @state()
   private _currentAction!: HTMLElement;
 
   @property()
