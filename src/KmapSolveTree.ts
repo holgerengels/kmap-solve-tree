@@ -89,7 +89,7 @@ export class KmapSolveTree extends LitElement {
   private _currentAction!: HTMLElement;
 
   @property()
-  public valid?: boolean = false;
+  public valid: boolean = false;
 
   connectedCallback() {
     super.connectedCallback();
@@ -100,7 +100,7 @@ export class KmapSolveTree extends LitElement {
     super.disconnectedCallback();
   }
 
-  protected async firstUpdated(_changedProperties: PropertyValues) {
+  protected async firstUpdated() {
     // @ts-ignore
     this.shadowRoot.append(...this.childNodes);
     for (let i = 0; i < this.shadowRoot.childNodes.length; i++) {
@@ -152,7 +152,7 @@ export class KmapSolveTree extends LitElement {
     }
   }
 
-  public clear() {
+  public init() {
     this._currentAction = this._startAction;
   }
 
@@ -174,5 +174,9 @@ export class KmapSolveTree extends LitElement {
     if (!finish) return;
 
     this._currentAction = finish as HTMLElement;
+  }
+
+  public isValid(): boolean {
+    return this.valid;
   }
 }
